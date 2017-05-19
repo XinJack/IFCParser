@@ -6,3 +6,11 @@ G:\日本会议\IFCParser\IFCParser\obj\x86\Debug\IFCParser.exe
 G:\日本会议\IFCParser\IFCParser\obj\x86\Debug\IFCParser.pdb
 G:\日本会议\IFCParser\IFCParser\obj\x86\Debug\IFCParser.csprojResolveAssemblyReference.cache
 G:\日本会议\IFCParser\IFCParser\obj\x86\Debug\IFCParser.Form1.resources
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.exe
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.pdb
+G:\IFCParser\IFCParser\bin\Debug\IFCParser.exe
+G:\IFCParser\IFCParser\bin\Debug\IFCParser.pdb
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.csprojResolveAssemblyReference.cache
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.Form1.resources
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.Properties.Resources.resources
+G:\IFCParser\IFCParser\obj\x86\Debug\IFCParser.csproj.GenerateResource.Cache

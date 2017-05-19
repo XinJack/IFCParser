@@ -41,31 +41,57 @@ namespace IFCParser
             //paser = new IFCParser(ifcTree);
         }
 
+        /// <summary>
+        /// 以json的格式输出到txt文件中
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void 显示ifc信息ToolStripMenuItem_Click(object sender, EventArgs e)
         {
 
             StringBuilder sb = new StringBuilder();
             Dictionary<string, IFCItem> ifc = parser.getIFCDict();
             Dictionary<string, string> attributes;
+            sb.Append("{\n");
+            int instanceCount = 0;
             if (ifc != null)
             {
-                foreach (string key in ifc.Keys)
+                foreach (string guid in ifc.Keys)
                 {
-                    sb.Append(key).Append('\n').Append("{");
-                    IFCItem item = ifc[key];
-                    attributes = item.getAttributes();
-                    foreach (string key1 in attributes.Keys)
+                    sb.Append(" \"" + guid + "\": {\n");
+                    IFCItem instance = ifc[guid];
+                    attributes = instance.getAttributes();
+                    int attributesCount = 0;
+                    foreach (string field in attributes.Keys)
                     {
-                        sb.Append("  " + key1 + ":" + attributes[key1] + ";").Append('\n');
-                    }
-                    sb.Append("}").Append('\n');
-                }
+                        string value = attributes[field];
+                        if (value != null)
+                        {
+                            value = value.Trim();
+                        }
 
+                        sb.Append("     \"" + field + "\":  \"" + value + "\"");
+                        if (attributesCount < attributes.Count - 1)
+                        {
+                            sb.Append(",");
+                        }
+                        sb.Append("\n");
+                        attributesCount++;
+                    }
+                    sb.Append("     }");
+                    if (instanceCount < ifc.Count - 1)
+                    {
+                        sb.Append(",");
+                    }
+                    sb.Append("\n");
+                    instanceCount++;
+                }
             }
-            //MessageBox.Show(sb.ToString());
-            OpenFileDialog dialog = new OpenFileDialog();
-            dialog.Filter = "文本文档|*.txt";
-            if (dialog.ShowDialog() == DialogResult.OK) {
+            sb.Append(" }");
+            SaveFileDialog dialog = new SaveFileDialog();
+            dialog.Filter = "文本文档|*.txt|json文件|*.json";
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
                 StreamWriter sw = new StreamWriter(dialog.FileName);
                 sw.Write(sb.ToString());
                 sw.Close();

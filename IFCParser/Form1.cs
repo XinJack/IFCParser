@@ -67,7 +67,7 @@ namespace IFCParser
                         string value = attributes[field];
                         if (value != null)
                         {
-                            value = value.Trim();
+                            value = value.Trim().Replace('\\', '/').Replace('\n', ' ');
                         }
 
                         sb.Append("     \"" + field + "\":  \"" + value + "\"");
@@ -99,9 +99,5 @@ namespace IFCParser
             }  
         }
 
-        private void toolStripDropDownButton2_Click(object sender, EventArgs e)
-        {
-
-        }
     }
 }
